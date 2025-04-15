@@ -21,11 +21,15 @@ public class Calculator {
     public String readScreen() {
         return screen;
     }
-
+    /**
+     * @return der zwischengespeicherten binären Operation als String
+     */
     public String getLatestOperation(){
         return latestOperation;
     }
-
+    /**
+     * @return den zwischengespeicherten Bildschirminhalt als Double
+     */
     public double getLatestValue(){
         return latestValue;
     }
@@ -111,8 +115,12 @@ public class Calculator {
                 default -> throw new IllegalArgumentException();
             };
             screen = Double.toString(result);
-            if (screen.equals("NaN")) screen = "Error";
-            if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+            if (screen.equals("NaN")){
+                screen = "Error";
+            }
+            if (screen.contains(".") && screen.length() > 11){
+                screen = screen.substring(0, 10);
+            }
         }
 
     }
@@ -125,7 +133,9 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.contains(".")) screen = screen + ".";
+        if(!screen.contains(".")) {
+            screen = screen + ".";
+        }
     }
 
     /**
@@ -162,9 +172,15 @@ public class Calculator {
                 default -> throw new IllegalArgumentException();
             };
             screen = Double.toString(result);
-            if (screen.equals("Infinity")) screen = "Error";
-            if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
-            if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+            if (screen.equals("Infinity")) {
+                screen = "Error";
+            }
+            if (screen.endsWith(".0")){
+                screen = screen.substring(0, screen.length() - 2);
+            }
+            if (screen.contains(".") && screen.length() > 11) {
+                screen = screen.substring(0, 10);
+            }
         }
     }
 }
