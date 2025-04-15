@@ -1,8 +1,10 @@
 package htw.berlin.prog2.ha1;
 
+import java.util.FormatFlagsConversionMismatchException;
+
 /**
  * Eine Klasse, die das Verhalten des Online Taschenrechners imitiert, welcher auf
- * https://www.online-calculator.com/ aufgerufen werden kann (ohne die Memory-Funktionen)
+ * <a href="https://www.online-calculator.com/">Calculator</a> aufgerufen werden kann (ohne die Memory-Funktionen)
  * und dessen Bildschirm bis zu zehn Ziffern plus einem Dezimaltrennzeichen darstellen kann.
  * Enthält mit Absicht noch diverse Bugs oder unvollständige Funktionen.
  */
@@ -141,6 +143,8 @@ public class Calculator {
      * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
      * und das Ergebnis direkt angezeigt.
      */
+
+    // bugfix: Division by zero
     public void pressEqualsKey() {
         if (latestValue == 0.0 && latestOperation.equals("/")) {
             screen = "Error";
