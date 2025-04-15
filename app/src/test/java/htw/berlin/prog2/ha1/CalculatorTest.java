@@ -135,5 +135,19 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
+
+    @Test
+    @DisplayName("should be possible to use 0 as first input: e.g. 0.1 - 0.9")
+    void testDotAsFirstInput(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(0);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+
+        String expected = "0.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
