@@ -109,5 +109,31 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should only clear the screen")
+    void testClearKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(9);
+        calc.pressClearKey();
+
+        double memoryExpected = 10.0;
+        double memoryActual = calc.getLatestValue();
+
+        String operationExpected = "+";
+        String operationActual = calc.getLatestOperation();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(memoryExpected, memoryActual);
+        assertEquals(operationExpected, operationActual);
+        assertEquals(expected, actual);
+
+    }
 }
 
