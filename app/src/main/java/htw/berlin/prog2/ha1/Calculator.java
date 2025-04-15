@@ -9,10 +9,9 @@ package htw.berlin.prog2.ha1;
 public class Calculator {
 
     private String screen = "0";
-
     private double latestValue;
-
     private String latestOperation = "";
+    private int count = 0;
 
     /**
      * @return den aktuellen Bildschirminhalt als String
@@ -52,10 +51,17 @@ public class Calculator {
      * Werte sowie der aktuelle Operationsmodus zurückgesetzt, so dass der Rechner wieder
      * im Ursprungszustand ist.
      */
+
+    // bugfix: First press should only clear the screen, second press should clear the memory as well.
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        count += 1;
+        if (count == 1){
+            screen = "0";
+        } else if (count == 2) {
+            latestOperation = "";
+            latestValue = 0.0;
+            count = 0;
+        }
     }
 
     /**
