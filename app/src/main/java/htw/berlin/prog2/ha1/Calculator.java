@@ -38,9 +38,10 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
         screen = screen + digit;
+        if ( screen.length() > 1 && screen.startsWith("0") && Character.isDigit(screen.charAt(1))){
+            screen = screen.substring(1);
+        }
     }
 
     /**
